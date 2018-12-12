@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212053945) do
+ActiveRecord::Schema.define(version: 20181212083418) do
 
   create_table "base_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "book_id"
+    t.text     "content",    limit: 65535
+    t.index ["book_id"], name: "index_base_periods_on_book_id", using: :btree
   end
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,13 +45,6 @@ ActiveRecord::Schema.define(version: 20181212053945) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["whole_question_id"], name: "index_detailed_questions_on_whole_question_id", using: :btree
-  end
-
-  create_table "periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "base_period_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["base_period_id"], name: "index_periods_on_base_period_id", using: :btree
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,10 +82,10 @@ ActiveRecord::Schema.define(version: 20181212053945) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "base_periods", "books"
   add_foreign_key "books", "users"
   add_foreign_key "detailed_answers", "whole_answers"
   add_foreign_key "detailed_questions", "whole_questions"
-  add_foreign_key "periods", "base_periods"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "whole_answers", "books"

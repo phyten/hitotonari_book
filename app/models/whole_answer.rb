@@ -4,6 +4,6 @@ class WholeAnswer < ApplicationRecord
   belongs_to :book
   has_many :detailed_answers
   has_one :whole_question
-  has_one :period
+  has_one :base_period
   
 end

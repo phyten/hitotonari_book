@@ -6,5 +6,6 @@ class Book < ApplicationRecord
   #Modelの関係づけ
   belongs_to :user
   has_many :whole_answers
+  has_many :base_periods
   
 end
