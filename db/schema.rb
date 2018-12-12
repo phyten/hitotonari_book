@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212050843) do
+ActiveRecord::Schema.define(version: 20181212051320) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20181212050843) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.index ["whole_answer_id"], name: "index_detailed_answers_on_whole_answer_id", using: :btree
+  end
+
+  create_table "detailed_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "whole_question_id"
+    t.string   "content"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["whole_question_id"], name: "index_detailed_questions_on_whole_question_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -57,5 +65,6 @@ ActiveRecord::Schema.define(version: 20181212050843) do
 
   add_foreign_key "books", "users"
   add_foreign_key "detailed_answers", "whole_answers"
+  add_foreign_key "detailed_questions", "whole_questions"
   add_foreign_key "whole_answers", "books"
 end
