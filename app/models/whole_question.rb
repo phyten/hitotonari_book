@@ -5,6 +5,6 @@ class WholeQuestion < ApplicationRecord
   
   #Modelの関係づけ
   has_many :detailed_questions
-  belong_to :whole_answer
+  belongs_to :whole_answer
   
 end
