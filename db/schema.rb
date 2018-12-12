@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212083418) do
+ActiveRecord::Schema.define(version: 20181212090738) do
 
   create_table "base_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 20181212083418) do
   create_table "whole_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "book_id"
     t.integer  "whole_question_id"
-    t.integer  "period_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "base_period_id"
     t.index ["book_id"], name: "index_whole_answers_on_book_id", using: :btree
   end
 
