@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212050524) do
+ActiveRecord::Schema.define(version: 20181212050843) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20181212050524) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["book_id"], name: "index_whole_answers_on_book_id", using: :btree
+  end
+
+  create_table "whole_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.boolean  "required"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "books", "users"
