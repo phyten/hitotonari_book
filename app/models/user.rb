@@ -10,6 +10,7 @@ class User < ApplicationRecord
                     
   #Modelの関係づけ
   has_many :books
+  has_many :relationships
   
   #textコピペ
   has_many :relationships
