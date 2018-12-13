@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212090738) do
+ActiveRecord::Schema.define(version: 20181213090751) do
 
   create_table "base_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "book_id"
-    t.text     "content",    limit: 65535
+    t.text     "content",         limit: 65535
+    t.integer  "whole_answer_id"
     t.index ["book_id"], name: "index_base_periods_on_book_id", using: :btree
+    t.index ["whole_answer_id"], name: "index_base_periods_on_whole_answer_id", using: :btree
   end
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,7 +73,6 @@ ActiveRecord::Schema.define(version: 20181212090738) do
     t.integer  "whole_question_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "base_period_id"
     t.index ["book_id"], name: "index_whole_answers_on_book_id", using: :btree
   end
 
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20181212090738) do
   end
 
   add_foreign_key "base_periods", "books"
+  add_foreign_key "base_periods", "whole_answers"
   add_foreign_key "books", "users"
   add_foreign_key "detailed_answers", "whole_answers"
   add_foreign_key "detailed_questions", "whole_questions"
