@@ -2,7 +2,7 @@ class DetailedAnswer < ApplicationRecord
   
   #Modelの関係づけ
   belongs_to :whole_answer
-  has_one :detailed_question
+  belongs_to :detailed_question
   
   #バリデーション
   validates :content, presence: true, length:{ maximum:1000 }
