@@ -3,19 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-img {
-  max-width: 100%;
-  }
 
-.grid-img {
+.main-image img {
   position: relative;
   overflow: hidden;
 }
 
-
 /*以降トップ画像の上の文字だが、画像にした方が楽そう*/
 
-.grid-img h3{
+.main-image h1{
+  position: absolute;/*絶対配置*/
+  color: white;/*文字は白に*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+.main-image h3{
   position: absolute;/*絶対配置*/
   color: white;/*文字は白に*/
   font-family :Quicksand, sans-serif;/*Google Font*/
@@ -29,27 +38,14 @@ img {
   
 }
 
-.grid-img h1{
-  position: absolute;/*絶対配置*/
-  color: white;/*文字は白に*/
-  font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 70%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
-}
-
 @media screen and (max-width:480px) { 
-  .grid-img h3{
+  .main-image h3{
     font-size: 4vw;
   }
 }
 
 @media screen and (max-width:480px) { 
-  .grid-img h1{
+  .main-image h1{
     font-size: 5vw;
   }
 }
