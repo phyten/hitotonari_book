@@ -1,48 +1,56 @@
-<div class="container">
-  <div class="col-xs-12 col-lg-8">
-    <div class="main_visual">
-    <!-- あとで画像いれる -->
-    </div>
-    <div class="main_text">
-      <h3>人をもっと好きになる</h3>
-      <h1>人となりBook</h1>  
-    </div>
-  </div>
-  <div class="col-xs-12 col-lg-4">
-    <div class="main_right">
-      <p>人となりBookをはじめよう</p>
+<% if logged_in? %>
+<!-- ログイン完了後トップページ -->
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
 
-      <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
-      <%= link_to 'ログイン', root_path, class: 'btn btn-info' %>
+<% else %>
+<!-- ログイン前トップページ -->  
+  <div class="container">
+    <div class="col-xs-12 col-lg-8">
+      <div class="main_visual">
+      <!-- あとで画像いれる -->
+      </div>
+      <div class="main_text">
+        <h3>人をもっと好きになる</h3>
+        <h1>人となりBook</h1>  
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="for-what" >
-    <div class="col-xs-6 col-lg-3">
-      <h3>友達同士で</h3>
-      <p>ほげほげ</p>
-    </div>
-    <div class="col-xs-6 col-lg-3">
-      <h3>仕事仲間で</h3>
-      <p>ほげほげ</p>
-    </div>
-    <div class="col-xs-6 col-lg-3">
-      <h3>初めましてに</h3>
-      <p>ほげほげ</p>
-    </div>
-    <div class="col-xs-6 col-lg-3">
-      <h3>自己分析に</h3>
-      <p>ほげほげ</p>
-    </div>
-  </div>
-</div>
+    <div class="col-xs-12 col-lg-4">
+      <div class="main_right">
+        <p>人となりBookをはじめよう</p>
   
-<div class="row">
-  <div class="text-center">
-    <h3>人となりBookをはじめよう</h3>
-      <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
-      <%= link_to 'ログイン', root_path, class: 'btn btn-info' %>
+        <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
+        <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
+      </div>
+    </div>
   </div>
-</div>
+  
+  <div class="row">
+    <div class="for-what" >
+      <div class="col-xs-6 col-lg-3">
+        <h3>友達同士で</h3>
+        <p>ほげほげ</p>
+      </div>
+      <div class="col-xs-6 col-lg-3">
+        <h3>仕事仲間で</h3>
+        <p>ほげほげ</p>
+      </div>
+      <div class="col-xs-6 col-lg-3">
+        <h3>初めましてに</h3>
+        <p>ほげほげ</p>
+      </div>
+      <div class="col-xs-6 col-lg-3">
+        <h3>自己分析に</h3>
+        <p>ほげほげ</p>
+      </div>
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="text-center">
+      <h3>人となりBookをはじめよう</h3>
+        <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
+        <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
+    </div>
+  </div>
+  
+<% end %>
