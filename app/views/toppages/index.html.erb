@@ -5,21 +5,23 @@
 <% else %>
 <!-- ログイン前トップページ -->  
   <div class="container">
-    <div class="col-xs-12 col-lg-8">
-      <div class="main_visual">
-      <!-- あとで画像いれる -->
-      </div>
-      <div class="main_text">
+    <div class="row">
+   
+      <div class="col-xs-12 col-lg-8 grid-img">
+        
+        <!-- あとで画像整える -->
+        <img src="assets/book_img1.jpg"　class="img-responsive">
+        
         <h3>人をもっと好きになる</h3>
         <h1>人となりBook</h1>  
       </div>
-    </div>
-    <div class="col-xs-12 col-lg-4">
-      <div class="main_right">
-        <p>人となりBookをはじめよう</p>
-  
-        <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
-        <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
+      <div class="col-xs-12 col-lg-4">
+        <div class="main_right">
+          <p>人となりBookをはじめよう</p>
+    
+          <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
+        </div>
       </div>
     </div>
   </div>
