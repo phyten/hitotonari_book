@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+/* フッターCSS　あとで整える */
+footer small {
+  padding: 8px 0;
+  color: #fff;
+}
+
+footer a {
+  font-size: smaller;
+  float: right;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: black;
+}
+
+ 
+.footer > .container {
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
