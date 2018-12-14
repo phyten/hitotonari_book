@@ -1,51 +1,32 @@
-// Place all the styles related to the toppages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
-.main-image img {
-  position: relative;
-  overflow: hidden;
+.main-image{
 }
 
-/*以降トップ画像の上の文字だが、画像にした方が楽そう*/
-
-.main-image h1{
-  position: absolute;/*絶対配置*/
-  color: white;/*文字は白に*/
-  font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 70%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
+.main-right{
+  padding: 5%;
 }
 
-.main-image h3{
-  position: absolute;/*絶対配置*/
-  color: white;/*文字は白に*/
-  font-family :Quicksand, sans-serif;/*Google Font*/
-  top: 60%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
-  
+.main-right p{
+  margin-bottom: 30px;
 }
 
-@media screen and (max-width:480px) { 
-  .main-image h3{
-    font-size: 4vw;
-  }
+.for-whats{
+  margin: 30px;
 }
 
-@media screen and (max-width:480px) { 
-  .main-image h1{
-    font-size: 5vw;
-  }
+.utilities{
+  margin-top: 20px;
+}
+
+.p-bigger{
+  font-size: 140%;
+  background: linear-gradient(transparent 50%, yellow 50%);
+}
+
+.bottom-part{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.bottom-part p{
+  margin-bottom: 30px;
 }

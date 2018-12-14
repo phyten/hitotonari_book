@@ -12,7 +12,7 @@
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    
   </head>
 
 
@@ -24,16 +24,19 @@
 
       <%= yield %>
     </div>
-    
-  </body>
   
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="row">
+        <small>&copy; Chika Ono</small>
+        <!-- あとでContactページつくってリンク整える -->
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
   
-  <footer class="fixed-bottom">
-  <div class="container">
-    <small>&copy; Chika Ono</small>
-    <!-- あとでContactページつくってリンク整える -->
-    <a href="#">Contact</a>
-  </div>
-</footer>
+</body>
+
   
 </html>

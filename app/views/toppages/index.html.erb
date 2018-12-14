@@ -4,52 +4,71 @@
 
 <% else %>
 <!-- ログイン前トップページ -->  
-  <div class="container-fluid">
+  <div class="container-fluid top-main">
     <div class="row">
-      <div class="main-image col-md-8">
-        <!-- あとで画像整える -->
-        <img src="assets/book_img1.jpg">
-        <h3>人をもっと好きになる</h3>
-        <h1>人となりBook</h1>  
+      <div class="main-image col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <!-- 画像はあとで差し替える -->  
+        <img src="assets/book_image.jpg" class="img-responsive">
       </div>
-      <div class="main-right col-md-4">
-        <p>人となりBookをはじめよう</p>
+      <div class="main-right col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
+        <p class="p-bigger">人となりBookをはじめよう</p>
         <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
         <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
       </div>
     </div>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid for-whats text-center">
     <div class="row">
       <div class="for-what" >
-        <div class="col-xs-6 col-md-3">
-          <h3>友達同士で</h3>
-          <p>ほげほげ</p>
+        
+        <div class="utilities panel panel-warning">
+          <div class="panel-heading">
+            <p class="panel-title">友達同士で</p>
+          </div>
+          <div class="panel-body">
+            仲良しでも、昔のことは意外と知らないもの。大切な友達との仲をさらに深めるましょう。知れば知るほど、もっと好きになります。
+          </div>
         </div>
-        <div class="col-xs-6 col-md-3">
-          <h3>仕事仲間で</h3>
-          <p>ほげほげ</p>
+        
+        <div class="utilities panel panel-warning">
+          <div class="panel-heading">
+            <p class="panel-title">仕事仲間で</p>
+          </div>
+          <div class="panel-body">
+            良いチームになるには、深い相互理解が不可欠です。仲間のこだわりどころ・大切にしたいこと、把握できていますか？
+          </div>
         </div>
-        <div class="col-xs-6 col-md-3">
-          <h3>初めましてに</h3>
-          <p>ほげほげ</p>
+                
+        <div class="utilities panel panel-warning">
+          <div class="panel-heading">
+            <p class="panel-title">初めましてに</p>
+          </div>
+          <div class="panel-body">
+            ネット上での出会いもとても多くなりました。でも、価値観の合わない人とのデートにお金や時間を浪費していませんか？
+          </div>
         </div>
-        <div class="col-xs-6 col-md-3">
-          <h3>自己分析に</h3>
-          <p>ほげほげ</p>
+        
+        <div class="utilities panel panel-warning">
+          <div class="panel-heading">
+            <p class="panel-title">自己分析に</p>
+          </div>
+          <div class="panel-body">
+            就活で必須の自己分析。でも、タイプを分類しても天職は見つかりません。自分の価値観・想いを整理することが第一歩です。
+          </div>
         </div>
-      </div>
+        
     </div>
   </div>
   
   <div class="container-fluid">  
     <div class="row">
-      <div class="text-center">
-        <h3>人となりBookをはじめよう</h3>
+      <div class="text-center bottom-part">
+        <p class="p-bigger">人となりBookをはじめよう</p>
           <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
           <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
       </div>
     </div>
   </div>
+  
   
 <% end %>
