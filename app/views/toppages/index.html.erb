@@ -1,6 +1,14 @@
+<!-- toppage#index -->
+
 <% if logged_in? %>
+
 <!-- ログイン完了後トップページ -->
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
+
+
+  <%= link_to '新規Bookの投稿', new_book_path %>
+
+
 
 <% else %>
 <!-- ログイン前トップページ -->  

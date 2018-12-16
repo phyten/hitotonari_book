@@ -1,0 +1,2 @@
+module BasePeriodsHelper
+end
