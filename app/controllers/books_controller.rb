@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :require_user_logged_in
+  
   def index
     @books = Book.all
   end
@@ -14,11 +16,11 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      flash[:success] = 'Bookを投稿しました。'
-      redirect_to root_url
+      flash[:success] = 'Bookを作成開始しました。'
+      redirect_to new_names_base_periods_path(book_id: @book.id)
     else
       @books = current_user.books.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = 'Bookの投稿に失敗しました。'
+      flash.now[:danger] = 'Bookの作成開始に失敗しました。'
       render 'toppages/index'
     end
   end

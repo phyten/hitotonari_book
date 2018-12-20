@@ -17,12 +17,12 @@ Rails.application.routes.draw do
   resources :whole_answers
   # <%= link_to '質問へ行く', new_whole_answer_path(whole_question_id: ～～) %>
   
-  resources :base_periods do
+  resources :base_periods, :except => [:new] do
     collection do
       get :new_names
       get :new_contents
-      post :new_names
-      post :new_contents
+      post :create_names
+      post :create_contents
     end
   end
 end

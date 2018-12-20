@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
  
   #ログイン要求処理
   include SessionsHelper
+
   
   private
   

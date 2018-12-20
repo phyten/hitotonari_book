@@ -1,0 +1,15 @@
+<!-- base_periods#new_name -->
+
+<h2>誕生から今までを大まかな時期に分けてみよう</h2>
+
+<!-- ユーザーが入力したbase_period.nameの数だけ繰り返し入力する-->
+<%= form_for(@base_period) do |f| %>
+  <%= f.label :content, 'Period1' %>
+  <%= f.text_field :content %>
+
+
+
+  <%= f.submit '次へ' %>
+<% end %>
+
+<%= link_to 'トップに戻る', root_path %>

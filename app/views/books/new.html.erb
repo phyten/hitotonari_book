@@ -2,13 +2,14 @@
 
 <h1>人となりBook新規作成ページ</h1>
 
-<%= form_for(@book) do |f| %>
+<%= form_for @book do |f| %>
   <%= f.label :name, 'Book Name' %>
   <%= f.text_field :name %>
   <%= f.label :book_photo, 'Book Photo' %>
   <%= f.text_field :book_photo %>
 
   <%= f.submit '次へ' %>
+  <!-- new_names_base_periods_pathにリンク -->
 <% end %>
 
 <%= link_to 'トップに戻る', root_path %>

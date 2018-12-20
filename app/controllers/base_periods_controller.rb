@@ -1,37 +1,45 @@
 class BasePeriodsController < ApplicationController
+  before_action :require_user_logged_in
   
   def index
-    @bp = BasePeriod.all
+     @base_periods = BasePeriod.all
   end
 
   def show
-    @bp = BasePeriod.find(params[:id])
+    @base_period = BasePeriod.find(params[:id])
   end
 
-  def new
-    @bp = BasePeriod.new
+  
+  def new_names
+    @base_period = Book.find(params[:book_id]).base_periods.build
+  end
+  
+  def new_contents
+    @base_period = Book.find(params[:book_id]).base_periods.build
   end
 
   def create
-    @bp = current_user.base_periods.build(base_period_params)
-    if @bp.save
+
+    @book = Book.find(params[:book_id])
+    @base_period = @book.base_periods.build(base_period_params)
+    if @base_period.save
       flash[:success] = 'periodを保存しました。'
-      redirect_to root_url
+      redirect_to new_contents_base_periods_path
     else
-      @bps = current_user.base_periods.order('created_at DESC').page(params[:page])
+      @base_periods= @book.base_periods.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'periodの保存に失敗しました。'
       render 'toppages/index'
     end
   end
 
   def edit
-    @bp = BasePeriod.find(params[:id])
+    @base_period = BasePeriod.find(params[:id])
   end
 
   def update
-    @bp = BasePeriod.find(params[:id])
+    @base_period = BasePeriod.find(params[:id])
 
-    if @bp.update(base_period_params)
+    if @base_period.update(base_period_params)
       flash[:success] = 'period は正常に更新されました'
       redirect_to @base_period
     else
@@ -41,8 +49,8 @@ class BasePeriodsController < ApplicationController
   end
 
   def destroy
-    @bp = BasePeriod.find(params[:id])
-    @bp.destroy
+    @base_period = BasePeriod.find(params[:id])
+    @base_period.destroy
     flash[:success] = 'periodを削除しました。'
     redirect_back(fallback_location: root_path)
   end
