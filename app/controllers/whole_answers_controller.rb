@@ -10,8 +10,11 @@ class WholeAnswersController < ApplicationController
   end
 
   def new
-    Book.find(params[:book_id]).whole_answers.build
-    @whole_answer.periods.build
+    @book = Book.find(params[:book_id])
+    @whole_answer = Book.find(params[:book_id]).whole_answers.build
+    
+    # base_periodの選択部分を書く（教えてもらう）
+    # @period = @whole_answer.select_period.build
         
     # whole_questionsを持っておいて、１個ずつ減らしていく
     @whole_questions = WholeQuestion.where(required: true)
