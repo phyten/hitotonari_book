@@ -1,0 +1,17 @@
+<!-- whole_answers#new -->
+
+<h2><%= whole_question.find(1).content %></h2>
+
+<p><%= detailed_question.find(1).content %></p>
+<%= form_for(@detailed_answer) do |f| %>
+  <%= f.text_field :content %>
+
+<p><%= detailed_question.find(2).content %></p>
+
+
+
+  <%= f.submit '次へ' %>
+  <!-- new_whole_answer_pathの次のにリンク（必要なだけ） -->
+<% end %>
+
+<%= link_to 'トップに戻る', root_path %>

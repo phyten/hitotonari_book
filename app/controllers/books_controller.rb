@@ -10,18 +10,18 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = current_user.books.build
   end
 
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      flash[:success] = 'Bookを作成開始しました。'
+      flash[:success] = 'Bookの作成を開始しました。'
       redirect_to new_names_base_periods_path(book_id: @book.id)
     else
       @books = current_user.books.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'Bookの作成開始に失敗しました。'
-      render 'toppages/index'
+      render 'books/new'
     end
   end
 

@@ -15,22 +15,24 @@ class BasePeriodsController < ApplicationController
   end
   
   def new_contents
-    @base_period = Book.find(params[:book_id]).base_periods.build
+    @base_period = BasePeriod.new
+    @base_period = BasePeriod.find_by(id: params[:format])
   end
 
-  def create
 
+  def create
     @book = Book.find(params[:book_id])
     @base_period = @book.base_periods.build(base_period_params)
     if @base_period.save
-      flash[:success] = 'periodを保存しました。'
-      redirect_to new_contents_base_periods_path
+      flash[:success] = 'period.nameを保存しました。'
+      redirect_to new_contents_base_periods_path(@base_period)
     else
       @base_periods= @book.base_periods.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = 'periodの保存に失敗しました。'
+      flash.now[:danger] = 'period.nameの保存に失敗しました。'
       render 'toppages/index'
     end
   end
+
 
   def edit
     @base_period = BasePeriod.find(params[:id])

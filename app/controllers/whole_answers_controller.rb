@@ -2,40 +2,41 @@ class WholeAnswersController < ApplicationController
   
     
   def index
-    @wa = WholeAnswer.all
+    @whole_answer = WholeAnswer.all
   end
 
   def show
-    @wa = WholeAnswer.find(params[:id])
+    @whole_answer = WholeAnswer.find(params[:id])
   end
 
   def new
     @whole_answer = WholeAnswer.new
-    WholeQuestion.detailed_question_length.times.each do |c|
-    @whole_answer.detailed_answers.build
     @whole_answer.periods.build
+    WholeQuestion.detailed_question_length.times.each do |c|
+      @whole_answer.detailed_answers.build
+    end
   end
 
   def create
-    @wa = current_user.whole_answers.build(whole_answer_params)
-    if @wa.save
+    @whole_answer = current_user.whole_answers.build(whole_answer_params)
+    if @whole_answer.save
       flash[:success] = '回答を保存しました。'
       redirect_to root_url
     else
-      @wa = current_user.whole_answers.order('created_at DESC').page(params[:page])
+      @whole_answer = current_user.whole_answers.order('created_at DESC').page(params[:page])
       flash.now[:danger] = '回答保存に失敗しました。'
       render 'toppages/index'
     end
   end
 
   def edit
-    @wa = WholeAnswer.find(params[:id])
+    @whole_answer = WholeAnswer.find(params[:id])
   end
 
   def update
-    @wa = WholeAnswer.find(params[:id])
+    @whole_answer = WholeAnswer.find(params[:id])
 
-    if @wa.update(whole_answer_params)
+    if @whole_answer.update(whole_answer_params)
       flash[:success] = '回答 は正常に更新されました'
       redirect_to @whole_answer
     else
@@ -45,8 +46,8 @@ class WholeAnswersController < ApplicationController
   end
 
   def destroy
-    @wa = WholeAnswer.find(params[:id])
-    @wa.destroy
+    @whole_answer = WholeAnswer.find(params[:id])
+    @@whole_answer.destroy
     flash[:success] = '回答を削除しました。'
     redirect_back(fallback_location: root_path)
   end
