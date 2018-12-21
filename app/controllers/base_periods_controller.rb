@@ -15,8 +15,12 @@ class BasePeriodsController < ApplicationController
   end
   
   def new_contents
+    @base_period = BasePeriod.find_by(id: params[:id])
+  end
 
-    @base_period = BasePeriod.find_by(id: params[:format])
+  def new_content
+    @base_period = BasePeriod.find_by(id: params[:id])
+    render :new_contents
   end
 
 
@@ -25,7 +29,7 @@ class BasePeriodsController < ApplicationController
     @base_period = @book.base_periods.build(base_period_params)
     if @base_period.save
       flash[:success] = 'period.nameを保存しました。'
-      redirect_to new_contents_base_periods_path(@base_period)
+      redirect_to new_content_base_period_path(@base_period)
     else
       @base_periods= @book.base_periods.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'period.nameの保存に失敗しました。'
@@ -43,7 +47,7 @@ class BasePeriodsController < ApplicationController
 
     if @base_period.update(base_period_params)
       flash[:success] = 'period は正常に更新されました'
-      redirect_to new_whole_answer_path(@base_period)
+      redirect_to new_whole_answer_path(book_id: @base_period.book_id)
     else
       flash.now[:danger] = 'period は更新されませんでした'
       render :edit

@@ -10,11 +10,14 @@ class WholeAnswersController < ApplicationController
   end
 
   def new
-    @book = Book.find(id: params[:book_id])
-    @whole_answer = @book.whole_answers.build
+    Book.find(params[:book_id]).whole_answers.build
     @whole_answer.periods.build
-    WholeQuestion.detailed_question_length.times.each do |c|
-      @whole_answer.detailed_answers.build
+        
+    # whole_questionsを持っておいて、１個ずつ減らしていく
+    @whole_questions = WholeQuestion.where(required: true)
+    @detailed_answers = Array.new
+    @whole_questions.first.detailed_questions.length.times.each do |c|
+      @detailed_answers << @whole_answer.detailed_answers.build
     end
   end
 

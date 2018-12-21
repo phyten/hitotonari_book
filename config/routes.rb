@@ -24,5 +24,8 @@ Rails.application.routes.draw do
       post :create_names
       post :create_contents
     end
+    member do
+      get :new_content
+    end
   end
 end

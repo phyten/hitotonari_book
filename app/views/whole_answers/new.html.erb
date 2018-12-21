@@ -1,9 +1,9 @@
 <!-- whole_answers#new -->
 
-<h2><%= whole_question.find(1).content %></h2>
+<h2><%= @whole_question.first.content %></h2>
 
-<p><%= detailed_question.find(1).content %></p>
-<%= form_for(@detailed_answer) do |f| %>
+<p><%= @whole_questions.first.detailed_questions.find(1).content %></p>
+<%= form_for(@detailed_answers.first) do |f| %>
   <%= f.text_field :content %>
 
 <p><%= detailed_question.find(2).content %></p>
