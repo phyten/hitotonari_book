@@ -6,10 +6,11 @@
 <%= form_for(@base_period) do |f| %>
   <%= f.label :content, 'Period1' %>
   <%= f.text_field :content %>
-
+  <%= hidden_field_tag :book_id, @base_period.book.id %>
 
 
   <%= f.submit '次へ' %>
+  <!-- new_whole_answer_pathにリンク -->
 <% end %>
 
 <%= link_to 'トップに戻る', root_path %>

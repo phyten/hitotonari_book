@@ -15,7 +15,7 @@ class BasePeriodsController < ApplicationController
   end
   
   def new_contents
-    @base_period = BasePeriod.new
+
     @base_period = BasePeriod.find_by(id: params[:format])
   end
 
@@ -43,7 +43,7 @@ class BasePeriodsController < ApplicationController
 
     if @base_period.update(base_period_params)
       flash[:success] = 'period は正常に更新されました'
-      redirect_to @base_period
+      redirect_to new_whole_answer_path(@base_period)
     else
       flash.now[:danger] = 'period は更新されませんでした'
       render :edit

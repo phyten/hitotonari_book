@@ -10,7 +10,8 @@ class WholeAnswersController < ApplicationController
   end
 
   def new
-    @whole_answer = WholeAnswer.new
+    @book = Book.find(id: params[:book_id])
+    @whole_answer = @book.whole_answers.build
     @whole_answer.periods.build
     WholeQuestion.detailed_question_length.times.each do |c|
       @whole_answer.detailed_answers.build
