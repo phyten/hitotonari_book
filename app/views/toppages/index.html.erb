@@ -11,67 +11,126 @@
 
 <% else %>
 <!-- ログイン前トップページ -->  
-<div class="container-fluid">
-  <div class="row">
-    <div class="header-bg cover-text text-center">
-  		<h2 style="color: #fff;">人を、もっと、好きになる。</h2>
+<!-- 背景画像 -->  
+  <body class="module-home" data-spy="scroll" data-target=".navbar" data-__gyazo-extension-added-paste-support="true">
+    <div class="parallax-mirror" style="visibility: visible; z-index: -100; position: fixed; top: 0px; left: 0px; overflow: hidden; transform: translate3d(0px, 0px, 0px); height: 695px; width: 100%;">
+      <img class="parallax-slider" src="../assets/top_image.jpg" style="transform: translate3d(0px, 0px, 0px); position: absolute; top: 0px; left: 0px; height: 695px; width: 100%; max-width: none;">
     </div>
-  </div>
-</div>
 
-  <div class="container-fluid for-whats text-center">
+<!-- header -->
+  <header role="header" class="header-top" id="headere-top">
+    <div class="header-fixed-wrapper" role="header-fixed">
+      <div class="container">
+<!-- hgroup -->
+        <hgroup class="row">
+<!-- logo -->
+<!-- logo -->
+<!-- nav -->
+          <nav role="navigation" class="col-xs-12 col-sm-10 col-md-10 col-lg-10 navbar navbar-default affix-top">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="/">人となりBook</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">            
+              <ul class="nav navbar-nav">			    
+                <% if logged_in? %>
+                  <li><%= link_to 'マイページ', user_path(current_user) %></li>
+                  <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to 'アカウント作成', signup_path %></li>
+                  <li><%= link_to 'ログイン', login_path %></li>
+                <% end %>
+              </ul>
+            </div>
+          </nav>
+<!-- nav -->
+        </hgroup>
+<!-- hgroup -->
+      </div>
+
+    </div>
+<!-- banner Text --> 
+    <section class="text-center">
+      <h2>人を、もっと、好きになる。</h2>
+      <br>
+      <br>
+        <div class="button-header"><%= link_to 'アカウント作成', signup_path %></div>
+    </section>
+<!-- banner Text -->   
+<!-- banner image -->
+    <figure>
+      <div class="parallax-window item tp-banner-container" data-parallax="scroll" data-image-src="images/banner-image.jpg" style="height: 695px;"></div>
+    </figure>
+<!-- banner image -->
+  </header>
+<!-- header -->
+
+<!-- main -->
+  <main role="main" id=" main-wrapper" class="container-fluid text-center">
+
+<!-- トップメッセージ -->  
     <div class="row">
-      <div class="for-what" >
-
-      <div class="utilities panel panel-warning">
-        <div class="panel-heading">
-          <p class="panel-title">友達同士で</p>
-        </div>
-        <div class="panel-body">
-            仲良しでも、昔のことは意外と知らないもの。大切な友達との仲をさらに深めるましょう。知れば知るほど、もっと好きになります。
-        </div>
-      </div>
-        
-      <div class="utilities panel panel-warning">
-        <div class="panel-heading">
-          <p class="panel-title">仕事仲間で</p>
-        </div>
-        <div class="panel-body">
-          良いチームになるには、深い相互理解が不可欠です。仲間のこだわりどころ・大切にしたいこと、把握できていますか？
-        </div>
-      </div>
-                
-      <div class="utilities panel panel-warning">
-        <div class="panel-heading">
-          <p class="panel-title">初めましてに</p>
-        </div>
-        <div class="panel-body">
-          ネット上での出会いもとても多くなりました。でも、価値観の合わない人とのデートにお金や時間を浪費していませんか？
-        </div>
-      </div>
-        
-      <div class="utilities panel panel-warning">
-        <div class="panel-heading">
-          <p class="panel-title">自己分析に</p>
-        </div>
-        <div class="panel-body">
-          就活で必須の自己分析。でも、タイプを分類しても天職は見つかりません。自分の価値観・想いを整理することが第一歩です。
-        </div>
-      </div>
-      
-     </div>
-  </div>
+      <header role="title-page">
+        <h4>人となりBook？</h4>
+        <br>
+        <h2>一人ひとりの価値観を<br>３分で相互理解</h2>
+        <br>
+      </header>
+      <article>
+      	<p>人となりBookは、数問の質問に答えるだけで、人となりがわかるストーリーが作成でき、<br>
+          友人や仕事仲間とシェアすることができるサービスです。<br>
+          人は、知れば知るほど、好きになる。自分を知り、人を知り、もっと人を好きになろう。</p>
+      </article>
+    </div>
   
-
-  <div class="container-fluid">  
-    <div class="row">
-      <div class="text-center bottom-part">
-        <p class="p-bigger">人となりBookをはじめよう</p>
-          <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
-          <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
-      </div>
+<!-- ４用途 -->  
+    <div class="row four-box-pan" role="four-box">
+  
+      <section class="col-xs-12 col-sm-6 col-md-3">
+        <figure><i class="fa fa-child" aria-hidden="true"></i></figure>
+        <h5>友達同士で</h5>
+          <p>仲良しでも、昔のことは意外と知らないもの。大切な友達との仲をさらに深めるましょう。知れば知るほど、もっと好きになります。</p>
+      </section>
+      
+      <section class="col-xs-12 col-sm-6 col-md-3">
+      	<figure><i class="fa fa-building" aria-hidden="true"></i></figure>
+        <h5>仕事仲間で</h5>
+          <p>良いチームになるには、深い相互理解が不可欠です。仲間のこだわりどころ・大切にしたいこと、把握できていますか？</p>
+      </section>
+      
+      <section class="col-xs-12 col-sm-6 col-md-3">
+        <figure><i class="fa fa-paper-plane" aria-hidden="true"></i></figure>
+      	<h5>初めましてに</h5>
+          <p>ネット上での出会いもとても多くなりました。でも、価値観の合わない人とのデートにお金や時間を浪費していませんか？</p>
+      </section>
+      
+      <section class="col-xs-12 col-sm-6 col-md-3">
+      	<figure><i class="fa fa-eye" aria-hidden="true"></i></figure>
+      	<h5>自己分析に</h5>
+         <p>就活で必須の自己分析。でも、タイプを分類しても天職は見つかりません。自分の価値観・想いを整理することが第一歩です。</p>
+      </section>
+    </div>  
+    
+    <!-- bottom-pan -->
+    <div class="bottom-pan">
+        <h2>人となりBookをはじめよう</h2>
+        <br>
+        <br>
+        <div class="row">
+            <div class="button-bottom"><%= link_to 'アカウント作成', signup_path %></div>
+            <div class="button-bottom"><%= link_to 'ログイン', login_path %></div>
+        </div>
     </div>
-  </div>
+<!-- bottom-pan -->
+
+    <div class="clearfix"></div>
+
+  </main>  
   
   
 <% end %>
