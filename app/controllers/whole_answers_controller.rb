@@ -18,9 +18,11 @@ class WholeAnswersController < ApplicationController
         
     # whole_questionsを持っておいて、１個ずつ減らしていく
     @whole_questions = WholeQuestion.where(required: true)
+    @whole_answer.whole_question = @whole_questions.first
     @detailed_answers = Array.new
-    @whole_questions.first.detailed_questions.length.times.each do |c|
-      @detailed_answers << @whole_answer.detailed_answers.build
+    @whole_questions.first.detailed_questions.each do |detailed_question|
+      whole_answer = @whole_answer.detailed_answers.build
+      whole_answer.detailed_question = detailed_question
     end
   end
 
