@@ -27,7 +27,7 @@ class WholeAnswersController < ApplicationController
   end
 
   def create
-    @whole_answer = current_user.whole_answers.build(whole_answer_params)
+    @whole_answer = Book.find(params[:book_id]).whole_answers.build(whole_answer_params)
     if @whole_answer.save
       flash[:success] = '回答を保存しました。'
       redirect_to root_url

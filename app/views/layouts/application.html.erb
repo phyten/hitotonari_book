@@ -13,22 +13,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- font-awesome -->
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">    
-
-    <!-- owl-carousel -->
-    <link rel="stylesheet" href="../assets/stylesheets/owl.carousel.css">
-    <link rel="stylesheet" href="../assets/stylesheets/owl.theme.css">
-
-    <!--JS自分で追加部分 -->
-    <script src=type="text/javascript" src="../assets/javascripts/jquery-3.3.1.min.js"></script>   
-    <script src="../assets/javascripts/owl.carousel.min.js"></script>
-    <script src="../assets/javascripts/animate.min.js"></script>
-    <script src="../assets/javascripts/main.js"></script>
-    <script src="../assets/javascripts/custom.js"></script>
-    <script src="../assets/javascripts/cable.js"></script>
-    <!-- parallax -->
-    <script src="../assets/javascripts/parallax.min.js"></script>
     
   </head>
 
@@ -37,6 +21,7 @@
     <div id="wrapper">
       <div class="container">
         <%= render 'layouts/flash_messages' %>
+        <%= render 'layouts/navbar' %>
   
         <%= yield %>
       </div>

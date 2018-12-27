@@ -7,13 +7,15 @@
 <!-- f.collection_selectを使う様子 -->
 
 <p><%= @whole_questions.first.detailed_questions.find(1).content %></p>
+<p><%= @whole_questions.first.detailed_questions.find(2).content %></p>
 <%= form_for(@whole_answer, url: {action: :create}) do |f| %>
   <% @whole_answer.detailed_answers.each do |detailed_answer| %>
-    <%= fields_for "detailed_answer[]", detailed_answer do |wa| %>
-    <%= wa.text_field :content %>
+    <%= fields_for "detailed_answer[]", detailed_answer do |da| %>
+    <%= da.text_field :content %>
   <% end %>
+  <%= hidden_field_tag :book_id %>
 <% end %>
-  <%= f.submist '次へ' %>
+  <%= f.submit '次へ' %>
   <!-- new_whole_answer_pathの次のにリンク（必要なだけ） -->
 <% end %>
 
