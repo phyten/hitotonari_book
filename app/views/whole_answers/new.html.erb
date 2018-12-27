@@ -8,15 +8,17 @@
 
 <p><%= @whole_questions.first.detailed_questions.find(1).content %></p>
 <p><%= @whole_questions.first.detailed_questions.find(2).content %></p>
+
 <%= form_for(@whole_answer, url: {action: :create}) do |f| %>
-  <% @whole_answer.detailed_answers.each do |detailed_answer| %>
-    <%= fields_for "detailed_answer[]", detailed_answer do |da| %>
+  <%= f.hidden_field :whole_question_id %>
+  <%= f.fields_for :detailed_answers, @whole_answer.detailed_answers do |da| %>
     <%= da.text_field :content %>
+    <%= da.hidden_field :detailed_question_id %>
   <% end %>
-  <%= hidden_field_tag :book_id %>
-<% end %>
+  <%= hidden_field_tag :book_id, @book.id %>
   <%= f.submit '次へ' %>
   <!-- new_whole_answer_pathの次のにリンク（必要なだけ） -->
 <% end %>
+
 
 <%= link_to 'トップに戻る', root_path %>

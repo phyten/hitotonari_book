@@ -21,18 +21,16 @@ class WholeAnswersController < ApplicationController
     @whole_answer.whole_question = @whole_questions.first
     @detailed_answers = Array.new
     @whole_questions.first.detailed_questions.each do |detailed_question|
-      whole_answer = @whole_answer.detailed_answers.build
-      whole_answer.detailed_question = detailed_question
+    @whole_answer.detailed_answers.build(detailed_question_id: detailed_question.id)
     end
   end
 
   def create
-    @whole_answer = Book.find(params[:book_id]).whole_answers.build(whole_answer_params)
+    @whole_answer = Book.find(params[:book_id]).whole_answers.build(detailed_answer_params)
     if @whole_answer.save
       flash[:success] = '回答を保存しました。'
       redirect_to root_url
     else
-      @whole_answer = current_user.whole_answers.order('created_at DESC').page(params[:page])
       flash.now[:danger] = '回答保存に失敗しました。'
       render 'toppages/index'
     end
@@ -45,7 +43,7 @@ class WholeAnswersController < ApplicationController
   def update
     @whole_answer = WholeAnswer.find(params[:id])
 
-    if @whole_answer.update(whole_answer_params)
+    if @whole_answer.update(detailed_answer_params)
       flash[:success] = '回答 は正常に更新されました'
       redirect_to @whole_answer
     else
@@ -63,7 +61,10 @@ class WholeAnswersController < ApplicationController
   
   private
 
-  def whole_answer_params
-    params.require(:whole_answer).permit(:book_id, :whole_question_id)
+  def detailed_answer_params
+    params.require(:whole_answer).permit(:whole_question_id, detailed_answers_attributes: [:content, :detailed_question_id])
+    # params.require(:whole_answer).permit(:whole_question_id, detailed_answers_attributes: [:content, :detailed_question_id, :whole_answer_id])
   end
+  
 end
+    

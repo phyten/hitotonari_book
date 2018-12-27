@@ -1,7 +1,7 @@
 class DetailedAnswer < ApplicationRecord
   
   #Modelの関係づけ
-  belongs_to :whole_answer
+  belongs_to :whole_answer, optional: true
   belongs_to :detailed_question
   
   #バリデーション
