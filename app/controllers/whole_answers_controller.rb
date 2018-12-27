@@ -13,9 +13,6 @@ class WholeAnswersController < ApplicationController
     @book = Book.find(params[:book_id])
     @whole_answer = Book.find(params[:book_id]).whole_answers.build
     
-    # base_periodの選択部分を書く（教えてもらう）
-    # @period = @whole_answer.select_period.build
-        
     # whole_questionsを持っておいて、１個ずつ減らしていく
     @whole_questions = WholeQuestion.where(required: true)
     @whole_answer.whole_question = @whole_questions.first
@@ -23,11 +20,16 @@ class WholeAnswersController < ApplicationController
     @whole_questions.first.detailed_questions.each do |detailed_question|
     @whole_answer.detailed_answers.build(detailed_question_id: detailed_question.id)
     end
+    
+    # base_periodの選択部分を書く
+    @base_periods = BasePeriod.where(book_id: @book.id)
+    @whole_answer.periods.build
+    
   end
 
   def create
     @whole_answer = Book.find(params[:book_id]).whole_answers.build(detailed_answer_params)
-    if @whole_answer.save
+    if @whole_answer.save!
       flash[:success] = '回答を保存しました。'
       redirect_to root_url
     else
@@ -62,8 +64,7 @@ class WholeAnswersController < ApplicationController
   private
 
   def detailed_answer_params
-    params.require(:whole_answer).permit(:whole_question_id, detailed_answers_attributes: [:content, :detailed_question_id])
-    # params.require(:whole_answer).permit(:whole_question_id, detailed_answers_attributes: [:content, :detailed_question_id, :whole_answer_id])
+    params.require(:whole_answer).permit(:whole_question_id, detailed_answers_attributes: [:content, :detailed_question_id], periods_attributes: [:base_period_id])
   end
   
 end

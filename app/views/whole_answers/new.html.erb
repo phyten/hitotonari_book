@@ -3,14 +3,18 @@
 <h2><%= @whole_questions.first.content %></h2>
 
 
-<!-- base_periodをユーザーが登録したbase_periodの中からプルダウン選択してもらう-->
-<!-- f.collection_selectを使う様子 -->
-
 <p><%= @whole_questions.first.detailed_questions.find(1).content %></p>
 <p><%= @whole_questions.first.detailed_questions.find(2).content %></p>
 
 <%= form_for(@whole_answer, url: {action: :create}) do |f| %>
   <%= f.hidden_field :whole_question_id %>
+  
+<!-- base_periodをユーザーが登録したbase_periodの中からプルダウン選択してもらう-->  
+  <%= f.fields_for :periods, @whole_answer.periods do |pd| %>
+    <%= pd.collection_select :base_period_id, @base_periods, :id, :name %>
+  <% end %>
+
+<!-- detailed_answersの登録-->    
   <%= f.fields_for :detailed_answers, @whole_answer.detailed_answers do |da| %>
     <%= da.text_field :content %>
     <%= da.hidden_field :detailed_question_id %>
