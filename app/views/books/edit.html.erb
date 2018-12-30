@@ -1,21 +1,24 @@
 <!-- book#edit -->
 
-<h1>人となりBook編集ページ</h1>
-
-<%= form_for(@book) do |f| %>
-  <%= f.label :name, 'Book Name' %>
-  <%= f.text_field :name %>
-  <%= f.label :book_photo, 'Book Photo' %>
-  <%= f.text_field :book_photo %>
-
-  <%= f.submit '更新' %>
-<% end %>
-
-<%= link_to 'トップに戻る', root_path %>
-
-
-<div>
-  <% if current_user == book.user %>
-    <%= link_to "Delete", book, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+<div class="container contents-wrapper">
+  <h1>人となりBook編集ページ</h1>
+  
+  <%= form_for(@book) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+    <%= f.label :name, 'Book Name' %>
+    <%= f.text_field :name %>
+    <%= f.label :book_photo, 'Book Photo' %>
+    <%= f.text_field :book_photo %>
+  
+    <%= f.submit '更新' %>
   <% end %>
+  
+  <%= link_to 'トップに戻る', root_path %>
+  
+  
+  <div>
+    <% if current_user == book.user %>
+      <%= link_to "Delete", book, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+    <% end %>
+  </div>
 </div>

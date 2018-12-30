@@ -1,85 +1,115 @@
 <!-- toppage#index -->
 
-<% if logged_in? %>
+	<% if logged_in? %>
+	
+	<!-- ログイン完了後トップページ -->
+	<div class="container contents-wrapper">
+	  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+	
+	
+	  <%= link_to '新規Bookの投稿', new_book_path %>
+	</div>
+	
+	
+	<% else %>
+	<!-- ログイン前トップページ -->  
+	
+		<!-- Header -->
+		<header id="head">
+			<div class="container">
+				<div class="row">
+					<h1 class="lead">人を、もっと、好きになる。</h1>
+					<p class="tagline"></p>
+					<div class="btn btn-original" role="button"><%= link_to 'アカウント登録', signup_path %></div>
+					<div class="btn btn-original" role="button"><%= link_to 'ログイン', login_path %></div>
+				</div>
+			</div>
+		</header>
+		<!-- /Header -->
+	
+		<!-- Intro -->
+		<div class="container text-center">
+			<br> <br>
+			<h2 class="thin">人となりを、知れば知るほど、好きになる。</h2>
+			<p class="text-muted">
+				人となりBookは、数問の質問に答えるだけで、人となりがわかるストーリーが作成でき、<br>
+      			友人や仕事仲間とシェアすることができるサービスです。</p>
+			</p>
+		</div>
+		<!-- /Intro-->
+			
+		<!-- Highlights - jumbotron -->
+		<div class="jumbotron top-space">
+			<div class="container">
+				
+				<h3 class="text-center thin">人となりBookの使い方</h3>
+				
+				<div class="row">
+					<div class="col-md-3 col-sm-6 highlight">
+						<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>友達同士で</h4></div>
+						<div class="h-body text-center">
+							<p>仲良しでも、昔のことは意外と知らないもの。大切な友達との仲をさらに深めるましょう。知れば知るほど、もっと好きになります。 </p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 highlight">
+						<div class="h-caption"><h4><i class="fa fa-building fa-5"></i>仕事仲間で</h4></div>
+						<div class="h-body text-center">
+							<p>良いチームになるには、深い相互理解が不可欠です。仲間のこだわりどころ・大切にしたいこと、把握できていますか？</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 highlight">
+						<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>初めましてに</h4></div>
+						<div class="h-body text-center">
+							<p>ネット上での出会いもとても多くなりました。でも、価値観の合わない人とのデートにお金や時間を浪費していませんか？ </p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 highlight">
+						<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>自己分析に</h4></div>
+						<div class="h-body text-center">
+							<p>就活で必須の自己分析。でも、タイプを分類しても天職は見つかりません。自分の価値観・想いを整理することが第一歩です。</p>
+						</div>
+					</div>
+				</div> <!-- /row  -->
+			
+			</div>
+		</div>
+		<!-- /Highlights -->
+	
+		<!-- container -->
+		<div class="container">
+	
+			<h2 class="text-center top-space">人となりBookをはじめよう</h2>
+			<br>
+	
+			<div class="row text-center">
+				<div class="col-md-2"></div>
+				<div class="col-md-3 highlight btn btn-original center-block" role="button"><%= link_to 'アカウント登録', signup_path %></div>
+				<div class="col-md-2"></div>
+				<div class="col-md-3 highlight btn btn-original center-block" role="button"><%= link_to 'ログイン', login_path %></div>
+				<div class="col-md-2"></div>
+			</div> <!-- /row -->
 
-<!-- ログイン完了後トップページ -->
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
-
-
-  <%= link_to '新規Bookの投稿', new_book_path %>
-
-
-<% else %>
-<!-- ログイン前トップページ -->  
-
-<!-- トップ画像 -->  
-<div class="container-fluid">
-  <div class="row">
-    <div class="header-bg cover-text text-center">
-  		<h2>人を、もっと、好きになる。</h2>
-  		<br>
-  		<br>
-      <div class="button-header"><%= link_to 'アカウント作成', signup_path %></div>
-    </div>
-  </div>
-</div>
-
-<!-- トップメッセージ -->  
-<div class="container-fluid text-center">
-  <header role="title-page">
-    <h4>人となりBook？</h4>
-    <h2>一人ひとりの価値観を<br>３分で相互理解</h2>
-  </header>
-  <article>
-  	<p>人となりBookは、数問の質問に答えるだけで、人となりがわかるストーリーが作成でき、<br>
-      友人や仕事仲間とシェアすることができるサービスです。<br>
-      人は、知れば知るほど、好きになる。自分を知り、人を知り、もっと人を好きになろう。</p>
-  </article>
-  
-<!-- ４用途 -->  
-  <div class="row four-box-pan" role="four-box">
-
-    <section class="col-xs-12 col-sm-6 col-md-3">
-      <figure><i class="fa fa-child" aria-hidden="true"></i></figure>
-      <h5>友達同士で</h5>
-        <p>仲良しでも、昔のことは意外と知らないもの。大切な友達との仲をさらに深めるましょう。知れば知るほど、もっと好きになります。</p>
-    </section>
-    
-    <section class="col-xs-12 col-sm-6 col-md-3">
-    	<figure><i class="fa fa-building" aria-hidden="true"></i></figure>
-      <h5>仕事仲間で</h5>
-        <p>良いチームになるには、深い相互理解が不可欠です。仲間のこだわりどころ・大切にしたいこと、把握できていますか？</p>
-    </section>
-    
-    <section class="col-xs-12 col-sm-6 col-md-3">
-      <figure><i class="fa fa-paper-plane" aria-hidden="true"></i></figure>
-    	<h5>初めましてに</h5>
-        <p>ネット上での出会いもとても多くなりました。でも、価値観の合わない人とのデートにお金や時間を浪費していませんか？</p>
-    </section>
-    
-    <section class="col-xs-12 col-sm-6 col-md-3">
-    	<figure><i class="fa fa-eye" aria-hidden="true"></i></figure>
-    	<h5>自己分析に</h5>
-       <p>就活で必須の自己分析。でも、タイプを分類しても天職は見つかりません。自分の価値観・想いを整理することが第一歩です。</p>
-    </section>
-  </div>  
-</div>  
-
-
-  <div class="clearfix"></div>
-  </div>
-
-<!--　再アカウント作成&ログイン -->  
-  <div class="container-fluid">  
-    <div class="row">
-      <div class="text-center bottom-part">
-        <p class="p-bigger">人となりBookをはじめよう</p>
-          <%= link_to 'アカウント作成', signup_path, class: 'btn btn-primary' %>
-          <%= link_to 'ログイン', login_path, class: 'btn btn-info' %>
-      </div>
-    </div>
-  </div>
-  
-  
-<% end %>
-
+	
+			<div class="jumbotron top-space">
+				<p>サンプルBookを表示</p>
+	  		</div>
+	
+		</div>	<!-- /container -->
+		
+		<!-- Social links. @TODO: replace by link/instructions in template -->
+		<section id="social">
+			<div class="container">
+				<div class="wrapper clearfix">
+					<!-- AddThis Button BEGIN -->
+					<div class="addthis_toolbox addthis_default_style">
+					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+					<a class="addthis_button_tweet"></a>
+					<a class="addthis_button_linkedin_counter"></a>
+					<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+					</div>
+					<!-- AddThis Button END -->
+				</div>
+			</div>
+		</section>
+		<!-- /social links -->
+	<% end %>

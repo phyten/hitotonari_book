@@ -1,20 +1,24 @@
-<div class="row">
-  <aside class="col-xs-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= @user.name %></h3>
+<!-- users#show -->
+
+<div class="container contents-wrapper">
+  <div class="row">
+    <aside class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.name %></h3>
+        </div>
+        <div class="panel-body">
+          <!-- あとで画像いれる <img class="media-object img-rounded img-responsive" src="" alt="">--> 
+        <%= link_to 'アカウント情報を編集する', edit_user_path(@user) %><br>
+        <%= link_to '新規Bookの投稿', new_book_path, class: 'btn btn-info' %>
+        </div>
       </div>
-      <div class="panel-body">
-        <!-- あとで画像いれる <img class="media-object img-rounded img-responsive" src="" alt="">--> 
-      <%= link_to 'アカウント情報を編集する', edit_user_path(@user) %><br>
-      <%= link_to '新規Bookの投稿', new_book_path, class: 'btn btn-info' %>
-      </div>
+    </aside>
+    <div class="col-xs-8">
+      <ul class="nav nav-tabs nav-justified">
+        <li><a href="#">My Books</a></li>
+        <li><a href="#">友達</a></li>
+      </ul>
     </div>
-  </aside>
-  <div class="col-xs-8">
-    <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">My Books</a></li>
-      <li><a href="#">友達</a></li>
-    </ul>
   </div>
 </div>

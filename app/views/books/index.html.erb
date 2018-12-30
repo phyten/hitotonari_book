@@ -1,14 +1,15 @@
 <!-- book#index -->
 
-<h1>人となりBook一覧</h1>
-
-<ul>
-  <% if @books.any? %>
-    <% @books.each do |book| %>
-      <li><%= book.name %></li>
+<div class="container contents-wrapper">
+  <h1>人となりBook一覧</h1>
+  
+  <ul>
+    <% if @books.any? %>
+      <% @books.each do |book| %>
+        <li><%= book.name %></li>
+      <% end %>
+    <% else %>
+      <p>Bookはありません</p>
     <% end %>
-  <% else %>
-    <p>Bookはありません</p>
-  <% end %>
-</ul>
-
+  </ul>
+</div>  
