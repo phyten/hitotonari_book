@@ -29,7 +29,7 @@ class BasePeriodsController < ApplicationController
   end
 
 
-  def create
+  def create # これ使ってない気がする
     @book = Book.find(params[:book_id])
     @base_periods = @book.base_periods.build(base_periods_params)
     
@@ -69,15 +69,11 @@ class BasePeriodsController < ApplicationController
   
   private
 
-  def base_period_params
+  def base_period_params　#使っていない気がする
     params.require(:base_period).permit(:name, :content)
   end
   
-  
-  
-  
-  
-  def base_periods_params
+  def base_periods_params　#使っていない気がする
     params.require(:book).permit(base_periods_attributes: [:name, :content])
   end
   

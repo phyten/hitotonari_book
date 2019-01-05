@@ -5,7 +5,7 @@
   
 
 <!-- base_periodsの新規登録(books#updateに回す)-->   
-  <%= form_for(@book, url: book_path(@book), html: {method: "patch"}) do |f| %>
+  <%= form_for(@book, url: book_path(@book , xxx: "yyy"), html: {method: "patch"}) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
 
     <%= f.fields_for :base_periods, @base_periods do |bp| %>

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   
   #Book作成
   resources :books
+
+  
+  #WholeAnswer作成
   resources :whole_answers
   
   #base_periods作成
