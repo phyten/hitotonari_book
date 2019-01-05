@@ -3,17 +3,21 @@
 <div class="container contents-wrapper">
   <h2>それぞれどんな時期だったか、印象的な出来事などをまとめてみよう</h2>
   
-  <!-- ユーザーが入力したbase_period.nameの数だけ繰り返し入力する-->
-  <%= form_for(@base_period) do |f| %>
+<!-- ユーザーが入力したbase_period.nameの数だけ繰り返し入力する-->
+
+  <!-- base_periodsのcontentの登録(books#updateに回す)-->   
+  <%= form_for(@book, url: book_path(@book), html: {method: "patch"}) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-    <%= f.label :content, 'Period1' %>
-    <%= f.text_field :content %>
-    <%= hidden_field_tag :book_id, @base_period.book.id %>
-  
-  
+    
+    <% @base_periods.each do |base_period| %>
+      <%= f.fields_for :base_periods, base_period do |bp| %>
+        <%= bp.label :content, base_period.name %>
+        <%= bp.text_field :content %>
+        <%= hidden_field_tag :book_id, base_period.book.id %>
+      <% end %>
+    <% end %>
     <%= f.submit '次へ' %>
-    <!-- new_whole_answer_pathにリンク -->
+    <!-- @book#showにリンク(books_controllerで指定) -->
   <% end %>
-  
   <%= link_to 'トップに戻る', root_path %>
 </div>

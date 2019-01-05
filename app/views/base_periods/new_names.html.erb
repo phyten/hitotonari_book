@@ -4,8 +4,7 @@
   <h2>誕生から今までを大まかな時期に分けてみよう</h2>
   
 
-<!-- base_periodsの登録 books#updateに回す-->   
-<!-- form_for(@book, url: book_path, method: :post) do |f| --> 
+<!-- base_periodsの新規登録(books#updateに回す)-->   
   <%= form_for(@book, url: book_path(@book), html: {method: "patch"}) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
 
@@ -13,15 +12,11 @@
       <%= bp.label :name, 'Period' %>
       <%= bp.text_field :name %>
       <%= hidden_field_tag :book_id, @base_period.book.id %>
-
-
     <% end %>
 
     <%= f.submit '次へ' %>
-    <!-- new_contents_base_periods_pathにリンク -->
+    <!-- @book#showにリンク(books_controllerで指定) -->
   <% end %>
 
-  
-  
   <%= link_to 'トップに戻る', root_path %>
   </div>

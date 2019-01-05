@@ -34,7 +34,8 @@ class BooksController < ApplicationController
 
     if @book.update(base_periods_params) # base_periods_paramsに
       flash[:success] = 'Book は正常に更新されました'
-      redirect_to @book
+      @base_periods = BasePeriod.where(book_id: @book.id)
+      redirect_to new_contents_base_periods_path(base_period_id: @base_periods.ids, book_id: @book.id)
     else
       flash.now[:danger] = 'Book は更新されませんでした'
       render :edit

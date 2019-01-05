@@ -19,7 +19,8 @@ class BasePeriodsController < ApplicationController
   end
   
   def new_contents
-    @base_periods = BasePeriod.find_by(id: params[:id])
+    @base_periods = BasePeriod.where(id: params[:base_period_id])
+    @book = Book.find(params[:book_id])
   end
 
   def new_content
