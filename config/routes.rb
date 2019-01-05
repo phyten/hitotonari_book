@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   #Book作成
   resources :books
   resources :whole_answers
-  # <%= link_to '質問へ行く', new_whole_answer_path(whole_question_id: ～～) %>
   
+  #base_periods作成
   resources :base_periods, :except => [:new] do
     collection do
       get :new_names

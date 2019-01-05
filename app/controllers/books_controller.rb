@@ -32,7 +32,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
 
-    if @book.update(book_params)
+    if @book.update(base_periods_params) # base_periods_paramsに
       flash[:success] = 'Book は正常に更新されました'
       redirect_to @book
     else
@@ -52,6 +52,12 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:name, :book_photo)
+  end
+  
+  
+  # base_periodsをbookに紐づけて複数保存するためのストロングパラメーター（updateアクション）
+  def base_periods_params
+    params.require(:book).permit(base_periods_attributes: [:name, :content])
   end
   
 end

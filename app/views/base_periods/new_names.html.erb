@@ -3,16 +3,25 @@
 <div class="container contents-wrapper">
   <h2>誕生から今までを大まかな時期に分けてみよう</h2>
   
-  <%= form_for(@base_period) do |f| %>
+
+<!-- base_periodsの登録 books#updateに回す-->   
+<!-- form_for(@book, url: book_path, method: :post) do |f| --> 
+  <%= form_for(@book, url: book_path(@book), html: {method: "patch"}) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-    <%= f.label :name, 'Period1' %>
-    <%= f.text_field :name %>
-    <%= hidden_field_tag :book_id, @base_period.book.id %>
-  <!-- このあとbase_period.nameをユーザーの任意の数だけ繰り返し入力する-->
-  
+
+    <%= f.fields_for :base_periods, @base_periods do |bp| %>
+      <%= bp.label :name, 'Period' %>
+      <%= bp.text_field :name %>
+      <%= hidden_field_tag :book_id, @base_period.book.id %>
+
+
+    <% end %>
+
     <%= f.submit '次へ' %>
     <!-- new_contents_base_periods_pathにリンク -->
   <% end %>
+
+  
   
   <%= link_to 'トップに戻る', root_path %>
   </div>

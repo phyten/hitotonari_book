@@ -21,7 +21,7 @@ class WholeAnswersController < ApplicationController
     @whole_answer.detailed_answers.build(detailed_question_id: detailed_question.id)
     end
     
-    # base_periodの選択部分を書く
+    # base_periodの選択部分
     @base_periods = BasePeriod.where(book_id: @book.id)
     @whole_answer.periods.build
     
@@ -29,7 +29,7 @@ class WholeAnswersController < ApplicationController
 
   def create
     @whole_answer = Book.find(params[:book_id]).whole_answers.build(detailed_answer_params)
-    if @whole_answer.save!
+    if @whole_answer.save
       flash[:success] = '回答を保存しました。'
       redirect_to root_url
     else

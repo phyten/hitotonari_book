@@ -17,8 +17,8 @@
   
   
   <div>
-    <% if current_user == book.user %>
-      <%= link_to "Delete", book, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+    <% if current_user == @book.user %>
+      <%= link_to "Delete", @book, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
     <% end %>
   </div>
 </div>

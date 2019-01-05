@@ -11,25 +11,30 @@ class BasePeriodsController < ApplicationController
 
   
   def new_names
-    @base_period = Book.find(params[:book_id]).base_periods.build
+    @book = Book.find(params[:book_id])
+    @base_periods = 7.times.each do |count|
+      @book.base_periods.build
+    end
+    @base_period = @book.base_periods.build
   end
   
   def new_contents
-    @base_period = BasePeriod.find_by(id: params[:id])
+    @base_periods = BasePeriod.find_by(id: params[:id])
   end
 
   def new_content
-    @base_period = BasePeriod.find_by(id: params[:id])
+    @base_periods = BasePeriod.find_by(id: params[:id])
     render :new_contents
   end
 
 
   def create
     @book = Book.find(params[:book_id])
-    @base_period = @book.base_periods.build(base_period_params)
-    if @base_period.save
+    @base_periods = @book.base_periods.build(base_periods_params)
+    
+    if @base_periods.save
       flash[:success] = 'period.nameを保存しました。'
-      redirect_to new_content_base_period_path(@base_period)
+      redirect_to new_contents_base_periods_path(@base_periods)
     else
       @base_periods= @book.base_periods.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'period.nameの保存に失敗しました。'
@@ -66,6 +71,15 @@ class BasePeriodsController < ApplicationController
   def base_period_params
     params.require(:base_period).permit(:name, :content)
   end
+  
+  
+  
+  
+  
+  def base_periods_params
+    params.require(:book).permit(base_periods_attributes: [:name, :content])
+  end
+  
   
 end
 

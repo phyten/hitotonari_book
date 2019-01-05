@@ -8,29 +8,33 @@
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<title>Progressus - Free business bootstrap template by GetTemplate</title>
+	<title>人となりBook</title>
 	<%= csrf_meta_tag %>
 
-	<link rel="shortcut icon" href="../assets/images/gt_favicon.png">
+	<link rel="shortcut icon" href="../../assets/images/gt_favicon.png">
 	
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 	
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="../assets/stylesheets/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/stylesheets/font-awesome.min.css">
+	<link rel="stylesheet" href="/CSS/bootstrap.min.css">
+	<link rel="stylesheet" href="/CSS/font-awesome.min.css">
 
 	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="../assets/stylesheets/bootstrap-theme.css" media="screen" >
-	<link rel="stylesheet" href="../assets/stylesheets/main.css">
+	<link rel="stylesheet" href="/CSS/bootstrap-theme.css" media="screen" >
+	<link rel="stylesheet" href="/CSS/main.css">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="../assets/javascripts/html5shiv.js"></script>
-	<script src="../assets/javascripts/respond.min.js"></script>
+	<script src=/js/html5shiv.js"></script>
+	<script src="/js/respond.min.js"></script>
 	<![endif]-->
+	
+
+	
+	
 </head>
 
 <body class="home">
@@ -80,8 +84,109 @@
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<script src="../assets/javascripts/headroom.min.js"></script>
-	<script src="../assets/javascripts/jQuery.headroom.min.js"></script>
-	<script src="../assets/javascripts/template.js"></script>
+	<script src="/js/headroom.min.js"></script>
+	<script src="/js/jQuery.headroom.min.js"></script>
+	<script src="/js/template.js"></script>
+	
+	
+	<!-- bookblock用読み込み追加分ここから -->
+    
+  <link rel="stylesheet" type="text/css" href="/CSS/bookblock.css" />
+  <link rel="stylesheet" type="text/css" href="/CSS/demo1.css" />
+  
+  <script src="/js/modernizr.custom.js"></script>
+  <script src="/js/jquerypp.custom.js"></script>
+  <script src="/js/jquery.bookblock.js"></script>
+    
+	<script type="text/javascript">
+    	var Page = (function () {
+     
+    		var config = {
+    				$bookBlock: $('#bb-bookblock'),
+    				$navNext: $('#bb-nav-next'),
+    				$navPrev: $('#bb-nav-prev'),
+    				$navFirst: $('#bb-nav-first'),
+    				$navLast: $('#bb-nav-last')
+    			},
+    			init = function () {
+    				config.$bookBlock.bookblock({
+    					speed: 1000,
+    					shadowSides: 0.8,
+    					shadowFlip: 0.7,
+    					direction : 'ltr',
+    					orientation : 'vertical' 
+    				});
+    				initEvents();
+    			},
+    			initEvents = function () {
+     
+    				var $slides = config.$bookBlock.children();
+     
+    				
+    				config.$navNext.on('click touchstart', function () {
+    					config.$bookBlock.bookblock('next');
+    					return false;
+    				});
+     
+    				config.$navPrev.on('click touchstart', function () {
+    					config.$bookBlock.bookblock('prev');
+    					return false;
+    				});
+     
+    				config.$navFirst.on('click touchstart', function () {
+    					config.$bookBlock.bookblock('first');
+    					return false;
+    				});
+     
+    				config.$navLast.on('click touchstart', function () {
+    					config.$bookBlock.bookblock('last');
+    					return false;
+    				});
+     
+    				
+    				$slides.on({
+    					'swipeleft': function (event) {
+    						config.$bookBlock.bookblock('next');
+    						return false;
+    					},
+    					'swiperight': function (event) {
+    						config.$bookBlock.bookblock('prev');
+    						return false;
+    					}
+    				});
+     
+    				
+    				$(document).keydown(function (e) {
+    					var keyCode = e.keyCode || e.which,
+    						arrow = {
+    							left: 37,
+    							up: 38,
+    							right: 39,
+    							down: 40
+    						};
+     
+    					switch (keyCode) {
+    					case arrow.left:
+    						config.$bookBlock.bookblock('prev');
+    						break;
+    					case arrow.right:
+    						config.$bookBlock.bookblock('next');
+    						break;
+    					}
+    				});
+    			};
+     
+    		return {
+    			init: init
+    		};
+     
+    	})();
+    </script>
+    <script>
+    	Page.init();
+    </script>
+    	
+<!-- bookblock用読み込み追加分ここまで -->
+	
 </body>
 </html>
