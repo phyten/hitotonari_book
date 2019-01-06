@@ -10,7 +10,12 @@ class Book < ApplicationRecord
   validates :name, presence: true, length:{ maximum:50 }
 
   def reject_base_period(attributed)
-    attributed['name'].blank?
+    if attributed['name'].blank?
+      if attributed['content'].present?
+        return false
+      end
+      return true
+    end
   end
 
 end

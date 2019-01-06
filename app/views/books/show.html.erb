@@ -3,33 +3,59 @@
 <div class="container contents-wrapper">
 	<h1>id: <%= @book.id %> の人となりBook詳細ページ</h1>
 
-	
+  <% @book.base_periods.each do |base_period| %>
+    <p><%= base_period.name %></p>
+    <p><%= base_period.content %></p>
+  <% end %>
+
+  <hr/>
+
+  <% @book.base_periods.order(:id).each do |base_period| %>
+    <section>
+      <h2><%= base_period.name %></h2>
+      <p><%= base_period.content %></p>
+      <% base_period.whole_answers.each do |whole_answer| %>
+        <% whole_answer.detailed_answers.each do |detailed_answer| %>
+          <ul>
+            <li><%= detailed_answer.detailed_question.content %></li>
+            <li><%= base_period.name %></li>
+            <li><%= detailed_answer.content %></li>
+          </ul>
+        <% end %>
+      <% end %>
+    </section>
+  <% end %>
+
+  <hr/>
+
 	<!-- bookblockを使って本デザイン表示(サンプル)ここから-->
-	  <div class="bb-custom-wrapper">
-			<div id="bb-bookblock" class="bb-bookblock">
-				<div class="bb-item">
-					<p>はじめまして</p>
-				</div>
-				<div class="bb-item">
-					<p>おはようございます</p>
-				</div>
-				<div class="bb-item">
-					<p>こんにちは</p>
-				</div>
-				<div class="bb-item">
-					<p>こんばんは</p>
-				</div>
-				<div class="bb-item">
-					<p>おやすみなさい</p>
-				</div>
-			</div>
-			<nav>
-				<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
-				<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
-				<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
-				<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
-			</nav>
+	<div class="bb-custom-wrapper">
+		<div id="bb-bookblock" class="bb-bookblock">
+      <% @book.base_periods.order(:id).each do |base_period| %>
+        <div class="bb-item">
+          <h2><%= base_period.name %></h2>
+          <p><%= base_period.content %></p>
+			  </div>
+        <% base_period.whole_answers.each do |whole_answer| %>
+          <% whole_answer.detailed_answers.each do |detailed_answer| %>
+            <div class="bb-item">
+              <ul>
+                <li><%= detailed_answer.detailed_question.content %></li>
+                <li><%= base_period.name %></li>
+                <li><%= detailed_answer.content %></li>
+              </ul>
+			      </div>
+          <% end %>
+        <% end %>
+      <% end %>
 		</div>
+		<nav>
+			<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
+			<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+			<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+			<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+		</nav>
+	</div>
 	<!-- bookblockを使って本デザイン表示（試行錯誤）ここまで-->
 	
 	

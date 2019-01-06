@@ -43,6 +43,7 @@ class WholeAnswersController < ApplicationController
     @whole_answer = Book.find(params[:book_id]).whole_answers.build(detailed_answer_params)
     if @whole_answer.save
       if params[:whole_answer][:whole_question_id].to_i == WholeQuestion.where(required: true).last.id
+        # ラストの必須項目の回答後の処理（確認ページに飛ばす）
         flash[:success] = '回答を保存しました。'
         redirect_to root_url
       else
