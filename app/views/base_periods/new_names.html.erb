@@ -2,9 +2,9 @@
 
 <div class="container contents-wrapper">
   <h2>誕生から今までを大まかな時期に分けてみよう</h2>
-  
 
-<!-- base_periodsの新規登録(books#updateに回す)-->   
+
+<!-- base_periodsの新規登録(books#updateに回す)-->
   <%= form_for(@book, url: book_path(@book , xxx: "yyy"), html: {method: "patch"}) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
 
